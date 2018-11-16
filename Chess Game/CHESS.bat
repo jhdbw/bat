@@ -4,25 +4,39 @@ REM * Autor: Jimmy Duarte *
 REM * Last Edit: 16/11/18 *
 REM ***********************
 color 70
-title Chess
+title The Chess Game
+echo *****************************************************
+echo * /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\*
+echo */                  THE CHESS GAME                 /*
+echo *\           ,....,                 ,....,         \*
+echo */         ,::::::^<                ^>::::::,        /*
+echo *\        ,::/^^\"``.              .``"/^^\::,       \*
+echo */       ,::/, `   O`.          .`O    ` ,\::,     /*
+echo *\      ,::; ^|        '.      .'        ^| ;::,     \*
+echo */      ,::^|  \___,-.  o)    (o  .-,___/  ^|::,     /*
+echo *\      ;::^|     \   '-'      `-'   /     ^|::;     \*
+echo */      ;::^|      \                /      ^|::;     /*
+echo *\      ;::^|   _.=`\              /`=._   ^|::;     \*
+echo */      `;:^|.=` _.=`\            /`=._ `=.^|:;"     /*
+echo *\        '^|_.=`   __\          /__   `=._^|'       \*
+echo */         `\_..==`` /          \ ``==.._/`        /*
+echo *\          .'.___.-'.          .'-.___.'.         \*
+echo */         /          \        /          \        /*
+echo *\        ('--......--')      ('--......--')       \*
+echo */        /'--......--'\      /'--......--'\       /*
+echo *\        `"--......--"`      `"--......--"`       \*
+echo * \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/*
+echo *****************************************************
+set /p player1=Ingrese su nombre Player1:
+set /p player2=Ingrese su nombre Player2:
+
 echo.
-echo               ,....,                ,....,
-echo             ,::::::^<                ^>::::::,
-echo            ,::/^^\"``.              .``"/^^\::,
-echo           ,::/, `   O`.          .`O   ` ,\::,
-echo          ,::; ^|        '.      .'        ^| ;::,
-echo          ,::^|  \___,-.  o)    (o  .-,___/  ^|::,
-echo          ;::^|     \   '-'      `-'   /     ^|::;
-echo          ;::^|      \                /      ^|::;
-echo          ;::^|   _.=`\              /`=._   ^|::;
-echo          `;:^|.=` _.=`\            /`=._ `=.^|:;"
-echo            '^|_.=`   __\          /__   `=._^|'
-echo             `\_..==`` /          \ ``==.._/` 
-echo              .'.___.-'.          .'-.___.'.
-echo             /          \        /          \
-echo            ('--......--')      ('--......--')
-echo            /'--......--'\      /'--......--'\
-echo            `"--......--"`      `"--......--"`
+echo Bienvenidos %player1% y %player2%. 
+echo Recuerda: "No te des por vencido ni aun vencido"
+echo Que gane el mejor!
+echo.
+pause
+cls
 
 REM CARGA DE ESPACIOS
 set space=  
@@ -131,7 +145,6 @@ goto tableroBlancas
 echo Hola %USERNAME%
 echo.
 echo     A    B    C    D    E    F    G    H
-echo.
 echo   _________________________________________
 echo 8 l %A8% l*%B8%*l %C8% l*%D8%*l %E8% l*%F8%*l %G8% l*%H8%*l 8
 echo   l____l*__*l____l*__*l____l*__*l____l*__*l
@@ -156,10 +169,9 @@ pause
 
 
 :tableroBlancas
-title Chess - Juegan Blancas
+title Chess Game - Juegan Blancas / %player1%
 echo.
 echo      A       B     C       D     E       F     G       H
-echo.
 echo   _________________________________________________________
 echo 8 l      l******l      l******l      l******l      l******l 8
 echo   l  %A8%  l* %B8% *l  %C8%  l* %D8% *l  %E8%  l* %F8% *l  %G8%  l* %H8% *l
@@ -185,12 +197,13 @@ echo   l______l******l______l******l______l******l______l******l
 echo 1 l******l      l******l      l******l      l******l      l 1
 echo   l* %A1% *l  %B1%  l* %C1% *l  %D1%  l* %E1% *l  %F1%  l* %G1% *l  %H1%  l
 echo   l******l______l******l______l******l______l******l______l
-echo.
+echo .
 echo      A       B     C       D     E       F     G       H
 
 
 set /p origen=Seleccione la pieza que desea mover:
 set /p destino=Seleccione el espacio a donde va mover:
+echo %date% %time% %origen% %destino% >> %player1%_vs_%player2%.txt
 
 if %origen%==A1 set aux=%A1%
 if %origen%==A2 set aux=%A2%
@@ -264,7 +277,6 @@ set %origen%=
 cls
 echo.
 echo      A       B     C       D     E       F     G       H
-echo.
 echo   _________________________________________________________
 echo 8 l      l******l      l******l      l******l      l******l 8
 echo   l  %A8%  l* %B8% *l  %C8%  l* %D8% *l  %E8%  l* %F8% *l  %G8%  l* %H8% *l
@@ -297,10 +309,9 @@ pause
 goto tableroNegras
 
 :tableroNegras
-title Chess - Juegan Negras
+title Chess Game - Juegan Negras / %player2%
 echo.
 echo      H       G     F       E     D       C     B       A
-echo.
 echo   _________________________________________________________
 echo 1 l      l******l      l******l      l******l      l******l 1
 echo   l  %H1%  l* %G1% *l  %F1%  l* %E1% *l  %D1%  l* %C1% *l  %B1%  l* %A1% *l
@@ -338,6 +349,7 @@ echo      H       G     F       E     D       C     B       A
 
 set /p origen=Seleccione la pieza que desea mover:
 set /p destino=Seleccione el espacio a donde va mover:
+echo %date% %time% %origen% %destino% >> %player1%_vs_%player2%.txt
 
 if %origen%==A1 set aux=%A1%
 if %origen%==A2 set aux=%A2%
@@ -411,7 +423,6 @@ set %origen%=
 cls
 echo.
 echo      H       G     F       E     D       C     B       A
-echo.
 echo   _________________________________________________________
 echo 1 l      l******l      l******l      l******l      l******l 1
 echo   l  %H1%  l* %G1% *l  %F1%  l* %E1% *l  %D1%  l* %C1% *l  %B1%  l* %A1% *l
