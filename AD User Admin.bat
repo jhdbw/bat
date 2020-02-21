@@ -1,6 +1,6 @@
 @echo off
 REM ***********************
-REM * Autor: Jimmy Duarte *
+REM * Autor: jhdbw        *
 REM * Last Edit: 16/11/18 *
 REM ***********************
 REM Establecemos las variables de fecha
