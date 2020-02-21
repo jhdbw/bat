@@ -1,11 +1,11 @@
 @echo off
 REM *******************************
-REM * Autor: Jimmy Duarte         *
-REM * Seguridad de la Información *
+REM * Autor: jhdbw                *
+REM *                             *
 REM * Last Edit: 01/10/19         *
 REM *******************************
 
-start C:\Users\beyond\Desktop\AS_PRODUCCION.WS
+start C:\Users\%USERNAME%\Desktop\AS_PRODUCCION.WS
 
 set t=10
 
