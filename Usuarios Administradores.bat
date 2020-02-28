@@ -1,7 +1,7 @@
 @echo off
 REM *************************
 REM * AUTOR: JIMMY DUARTE   *
-REM * LAST EDIT: 28/02/2020 *
+REM * LAST EDIT: 25/02/2020 *
 REM *************************
 
 REM ALMACENAR FECHA Y HORA EN VARIABLES
