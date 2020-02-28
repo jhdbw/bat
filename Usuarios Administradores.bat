@@ -106,7 +106,7 @@ title Usuarios Administradores - Descargar Lista de Equipos
 echo %DATE% %TIME%
 echo Descargando datos:
 REM DESCARGAR LISTA DE EQUIPOS DEL DOMINIO
-CSVDE -f %aaaammdd%_equipos.csv -r objectClass=computer -l "name"
+CSVDE -f %LOG4% -r objectClass=computer -l "name"
 REM csvde  -r "(objectClass=computer)"  -f equipos.csv -l "name, DN"
 REM VERIFICAR POR PING LIVE HOSTS Y GENERAR LOG
 for /F "skip=1 tokens=2 delims=,=" %%i in (%LOG4%) do (
