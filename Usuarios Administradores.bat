@@ -1,7 +1,7 @@
 @echo off
 REM *************************
 REM * AUTOR: JIMMY DUARTE   *
-REM * LAST EDIT: 25/02/2020 *
+REM * LAST EDIT: 30/09/2020 *
 REM *************************
 
 REM ALMACENAR FECHA Y HORA EN VARIABLES
@@ -28,8 +28,8 @@ set LOG7=%aaaammdd%_EliminarAdmin.txt
 REM GENERACION DEL MENU
 :INICIO
 title Usuarios Administradores
-echo %aaaa%/%mm%/%dd%
 echo ...............................................
+echo . %aaaa%/%mm%/%dd%                                  .
 echo .          Bienvenido %username%
 echo ...............................................
 echo . 1. Escanear un solo equipo                  .
@@ -43,9 +43,8 @@ echo . 6. Lista de Administradores a Eliminar      .
 echo ...............................................
 echo ...............................................
 echo .                                             .
-echo .                                             .
 echo ...............................................
-set /p opci= Seleccione una opcion: 
+set /p opci= Seleccione una opcion:  
 if %opci%==1 goto OPCI1
 if %opci%==2 goto OPCI2
 if %opci%==3 goto OPCI3
@@ -103,20 +102,31 @@ goto INICIO
 REM /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 :OPCI4
 title Usuarios Administradores - Descargar Lista de Equipos
+setlocal enableextensions enabledelayedexpansion
+
 echo %DATE% %TIME%
 echo Descargando datos:
 REM DESCARGAR LISTA DE EQUIPOS DEL DOMINIO
 CSVDE -f %LOG4% -r objectClass=computer -l "name"
 REM csvde  -r "(objectClass=computer)"  -f equipos.csv -l "name, DN"
 REM VERIFICAR POR PING LIVE HOSTS Y GENERAR LOG
+set /a contador=0
+
 for /F "skip=1 tokens=2 delims=,=" %%i in (%LOG4%) do (
+set /a contador+=1
+echo __________________________________________________________________
+echo Ping !contador! de 
+type %LOG4% | find /v /c ""
 ping -n 1 %%i
-if %ERRORLEVEL%==0 echo %%i>> %LOG5%
+
+echo !errorlevel! && echo %%i
+if !errorlevel!==0 (echo !errorlevel! && echo %%i>> %LOG5%)
 )
+REM endlocal
+
 echo %DATE% %TIME%
 pause
 goto INICIO
-
 
 
 REM /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -138,7 +148,7 @@ echo %%a;%%b;%%c>> %LOG3%
 )
 echo %DATE% %TIME%
 pause
-goto opci2
+goto INICIO
 
 
 
